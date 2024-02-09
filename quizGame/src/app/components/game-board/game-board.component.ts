@@ -1,6 +1,6 @@
 import { Component, inject, input } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { category } from '../../models/category-model';
+import { category, question } from '../../models/category-model';
 import { QuestionModalComponent } from '../question-modal/question-modal.component';
 
 @Component({
@@ -17,9 +17,9 @@ export class GameBoardComponent{
   
   readonly #modalService = inject(NgbModal);
   
-  openQuestion(question: string, answer: string) {
+  openQuestion(question: question) {
     const modalRef = this.#modalService.open(QuestionModalComponent);
     modalRef.componentInstance.question = input(question);
-    modalRef.componentInstance.answer = input(answer);
+    
   }
 }

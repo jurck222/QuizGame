@@ -6,5 +6,6 @@ export interface category{
 export interface question{
     clue : string,
     answer: string,
-    value: number
+    value: number,
+    answered: boolean
 };

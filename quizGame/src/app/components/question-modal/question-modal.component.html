@@ -1,4 +1,4 @@
-<div class="modal-header border-0">
+<div class="modal-header">
     <button
       type="button"
       class="btn-close"
@@ -6,16 +6,20 @@
       (click)="activeModal.dismiss('Cross click')"
     ></button>
   </div>
-  <div class="modal-body border-0">
-   <h2 class="display-4">{{ question() }}</h2>
+  <div class="modal-body">
+    <h2 class="display-5">{{ question().clue }}</h2>
+    <input #answer style="margin-top: 15px;" class="form-control" type="text" />
+   @if (showAnswer==='correct') {
+    <p style="color: greenyellow;">You answered right!</p>
+   }
+   @else if (showAnswer==='wrong') {
+    <p style="color: red;">You are dumb!</p>
+   }
   </div>
-  @if(showAnswer){
-    <div>
-        <h2 class="display-5">{{ answer() }}</h2>
-    </div>
-  }
-  <div class="modal-footer border-0">
-    <button type="submit" class="btn btn-primary" (click)="toggleAnswer()">
-      Show Answer
+  <div class="modal-footer">
+    @if(showAnswer==='unanswered'){
+    <button type="submit" class="btn btn-primary" (click)="submitAnswer(answer.value)">
+      Submit
     </button>
+  }
   </div>

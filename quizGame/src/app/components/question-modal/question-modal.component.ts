@@ -1,21 +1,26 @@
 import { Component, inject, input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { question } from '../../models/category-model';
 
 @Component({
   selector: 'app-question-modal',
   standalone: true,
   imports: [],
-  templateUrl: './question-modal.component.html',
-  styleUrl: './question-modal.component.css'
+  templateUrl: './question-modal.component.html'
 })
 export class QuestionModalComponent {
-  question = input.required<string>();
-  answer = input.required<string>();
-  showAnswer = false;
+  question = input.required<question>();
+  showAnswer = 'unanswered';
 
   activeModal = inject(NgbActiveModal);
 
-  toggleAnswer() {
-    this.showAnswer = !this.showAnswer;
+  submitAnswer(answer: string) {
+    if(answer === this.question().answer){
+      this.question().answered = true;
+      this.showAnswer = 'correct'
+    }
+    else{
+      this.showAnswer = 'wrong'
+    }
   }
 }
