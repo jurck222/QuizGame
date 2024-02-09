@@ -1,0 +1,18 @@
+<div class="container ">
+    <div class="row justify-content-md-center ">
+        @for(category of categories(); track category){ 
+            <div class="col question">
+                <h3 class="display-4">{{ category.category }}</h3>
+            </div>
+        }
+    </div>
+    @for(queNum of questionNums; track queNum){
+        <div class="row justify-content-md-center ">
+        @for(catNum of categoryNums; track catNum){
+            <div class="col question justify-content-center text-center" (click)="openQuestion(categories()[catNum].questions[queNum].clue, categories()[catNum].questions[queNum].answer)">
+                <h3 class="display-4">&#36;{{ categories()[catNum].questions[queNum].value }}</h3>
+            </div>
+        }
+    </div>
+}
+</div>

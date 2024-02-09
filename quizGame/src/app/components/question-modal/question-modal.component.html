@@ -1,0 +1,21 @@
+<div class="modal-header border-0">
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="activeModal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body border-0">
+   <h2 class="display-4">{{ question() }}</h2>
+  </div>
+  @if(showAnswer){
+    <div>
+        <h2 class="display-5">{{ answer() }}</h2>
+    </div>
+  }
+  <div class="modal-footer border-0">
+    <button type="submit" class="btn btn-primary" (click)="toggleAnswer()">
+      Show Answer
+    </button>
+  </div>

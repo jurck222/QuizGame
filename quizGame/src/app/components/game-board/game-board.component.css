@@ -1,0 +1,9 @@
+div {
+    text-align: center;
+}
+
+.question {
+    background-color: #060CE9;
+    color: #FFCC00;
+    border: solid black;
+}
